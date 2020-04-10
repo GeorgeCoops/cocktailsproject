@@ -127,6 +127,7 @@ end
     end
 end
 
+
 #cocktail_garnish
 50.times do
         CocktailGarnish.create(
@@ -137,4 +138,26 @@ end
     }
     )
 
+end
+
+#cocktail_mixers
+50.times do
+    CocktailMixer.create(
+{
+    cocktail_id: Cocktail.all.sample.id,
+    mixer_id: Mixer.all.sample.id
+
+}
+)
+end
+
+#cocktail_alcohol
+50.times do
+    CocktailAlcohol.create(
+{
+    cocktail_id: Cocktail.all.sample.id,
+    alcohol_id: Alcohol.all.sample.id
+
+}
+)
 end
