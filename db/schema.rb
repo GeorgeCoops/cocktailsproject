@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2020_04_10_105508) do
   create_table "cocktails", force: :cascade do |t|
     t.string "name"
     t.integer "calories"
-    t.text "instructions"
-    t.text "description"
+    t.string "instructions"
+    t.string "description"
     t.string "difficulty"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

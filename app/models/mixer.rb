@@ -5,10 +5,11 @@ class Mixer < ApplicationRecord
 
     validates :name, presence: true 
     validates :name, length: { maximum: 20 }
-    validates :colour, format: { with: /\A[a-zA-Z]+\z/,
-    message: "only allows letters" }
+    # validates :name, format: { with: /\A[a-zA-Z]+\z/,
+    # message: "only allows letters" } # need to add inclusion of spaces
     validates :sweet_sour, presence: true 
-    validates :sweet_sour, inclusion: { in: %w(sweet sour), 
+    validates :sweet_sour, inclusion: { in: %w(Sweet Sour), 
     message: "%{value} is not a valid choice."}
+    validates :name, uniqueness: true
 end
 

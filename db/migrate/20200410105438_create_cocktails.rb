@@ -3,8 +3,8 @@ class CreateCocktails < ActiveRecord::Migration[6.0]
     create_table :cocktails do |t|
       t.string :name
       t.integer :calories
-      t.text :instructions
-      t.text :description
+      t.string :instructions
+      t.string :description
       t.string :difficulty
       t.references :user, null: false, foreign_key: true
 

@@ -12,6 +12,7 @@ class Cocktail < ApplicationRecord
   validates :name, length: { maximum: 20 }
   validates :difficulty, inclusion: { in: %w(easy medium hard), 
   message: "%{value} is not a valid choice."}
-  validates :calories, inclusion: { in: %w(0..1000)}
+  validates :calories, inclusion: { in: (0..1000)}
+
 
 end
