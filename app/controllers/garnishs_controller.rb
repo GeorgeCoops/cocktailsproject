@@ -1,3 +1,0 @@
-class GarnishsController < ApplicationController
-
-end

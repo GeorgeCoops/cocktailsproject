@@ -3,5 +3,10 @@ class Alcohol < ApplicationRecord
     has_many :cocktails, through: :cocktail_alcohol
     has_many :users, through: :cocktails
 
-    
+    validates :name, presence: true 
+    validates :name, length: { maximum: 20 }
+    validates :alcohol_content, inclusion: { in: w%(0..100) }
+    validates :colour, format: { with: /\A[a-zA-Z]+\z/,
+    message: "only allows letters" }
 end
+
