@@ -1,0 +1,45 @@
+<h1> <%= @cocktail.name %> </h1>
+
+<p> Calories: <%= @cocktail.calories %> </p>
+
+Mixer/s this cocktail contains: 
+<ul>
+<% @cocktail.mixers.each do |mixer| %> 
+    <li> 
+    <%= link_to mixer.name, mixer_path(mixer) %>
+    </li> 
+<% end %> 
+</ul>    
+
+Garnish/es this cocktail contains: 
+<ul>
+<% @cocktail.garnishes.each do |garnish| %> 
+    <li> 
+    <%= link_to garnish.name, garnish_path(garnish) %>
+    </li> 
+<% end %> 
+</ul>    
+
+
+Alcohol/s this cocktail contains: 
+<ul>
+<% @cocktail.alcohols.each do |alcohol| %> 
+    <li> 
+    <%= link_to alcohol.name, alcohol_path(alcohol) %>
+    </li> 
+<% end %> 
+</ul>    
+
+
+
+
+
+
+<h4>Click here for a random cocktail cocktail!<%= button_to "Show me the cocktail", @cocktail, :method => :get %><br>
+</h4>
+
+
+<li>
+<% cocktail = Cocktail.all.sample %> 
+<%=link_to cocktail.name, cocktail_path(cocktail)%>
+</li>

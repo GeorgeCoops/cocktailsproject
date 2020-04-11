@@ -1,0 +1,11 @@
+<h1>Mixer Index Page </h1>
+
+<ul>
+<%@mixers.each do |mixer|%>
+<li>
+    <%=link_to mixer.name, mixer%>
+</li>
+    <%end%>
+</ul>
+
+

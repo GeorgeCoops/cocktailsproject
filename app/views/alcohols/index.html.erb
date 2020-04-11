@@ -1,0 +1,11 @@
+<h1>Alcohol Index Page </h1>
+
+<ul>
+<%@alcohols.each do |alcohol|%>
+<li>
+    <%=link_to alcohol.name, alcohol%>
+</li>
+    <%end%>
+</ul>
+
+

@@ -1,0 +1,11 @@
+<h1>Garnish Index Page </h1>
+
+<ul>
+<%@garnishes.each do |garnish|%>
+<li>
+    <%=link_to garnish.name, garnish%>
+</li>
+    <%end%>
+</ul>
+
+

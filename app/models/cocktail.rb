@@ -14,5 +14,29 @@ class Cocktail < ApplicationRecord
   message: "%{value} is not a valid choice."}
   validates :calories, inclusion: { in: (0..1000)}
 
+  # def similar_cocktails
+  #   Cocktail.all.map do |cock|
+  #     a = cock.alcohols.to_a
+  #     b = self.alcohols.to_a
+
+  #       a.each do |cocktail|
+  #         if a.include?(b.each)
+  #           return cocktail.name
+  #       end 
+      
+  #   end
+  # end
+  # end
+
+    def similar_cocktails
+
+      a = cock.alcohols.to_a
+      b = self.alcohols.to_a
+
+      if a[0] == b[0]
+        
+      end
+
+  end
 
 end
