@@ -108,8 +108,10 @@ end
     end
 end
 
+
+
 #cocktail
-10.times do
+50.times do
     cock = Cocktail.new(
     {
         name: cocktail_names.sample,
@@ -117,8 +119,9 @@ end
         instructions: cocktail_instructions.sample,
         description: cocktail_descriptions.sample,
         difficulty: cocktail_difficulty.sample,
-        user_id: User.all.sample.id
+        user_id: User.all.sample.id #only seeds a user when the cocktail name is different
  
+
     }
     )
     if cock.valid? 
@@ -161,3 +164,15 @@ end
 }
 )
 end
+
+
+
+# User.all.map do |user| 
+#     new_array = []
+#     one = user.cocktails.map do |cocktail|
+#         if !new_array.include?(cocktail)
+#             new_array << cocktail
+#         end
+#     end
+    
+# end
