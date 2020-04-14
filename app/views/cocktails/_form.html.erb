@@ -16,17 +16,54 @@
 <%=f.label "Difficulty: "%>
 <%= f.text_field :difficulty%><br>
 <br>
-<%=f.label "Select your Garnishes: "%>
+
+<h2> Select your Garnishes: </h2> 
 <%= f.collection_check_boxes :garnish_ids, Garnish.all, :id, :name %><br>
-<br>
-<%=f.label "Select your Garnishes: "%>
+
   <%= f.fields_for :garnishes, @cocktail.garnishes.build do |garnishes_fields| %>
-    <%= f.label "Create a new garnish: "%>
-    <%= garnishes_fields.text_field :name %><br>
+    <h3> Or create a new garnish: </h3>
+    <%= garnishes_fields.text_field :name %>
+    <br>
+    <br>
     <%= f.label "Is it edible?"%>
   <%= garnishes_fields.check_box :edible %>
     <%end %>
 <br>
+
+
+<h2> Select your Mixers: </h2>
+<%= f.collection_check_boxes :mixer_ids, Mixer.all, :id, :name %><br>
+<br>
+
+  <%= f.fields_for :mixers, @cocktail.mixers.build do |mixers_fields| %>
+    <h3> Or create a new mixer: </h3>
+    <%= f.label "Name: "%>
+    <%= mixers_fields.text_field :name %><br>
+    <br>
+    <%= f.label "Sweet or Sour: "%>
+    <%= mixers_fields.text_field :sweet_sour %><br>
+    <%end %>
+<br>
+
+<h2> Select your Alcohols: </h2>
+<%= f.collection_check_boxes :alcohol_ids, Alcohol.all, :id, :name %><br>
+<br>
+
+<%= f.fields_for :alcohols, @cocktail.alcohols.build do |alcohols_fields| %>
+    <h3> Or create a new Alcohol: </h3>
+    <%= f.label "Name: "%>
+    <%= alcohols_fields.text_field :name %><br>
+    <br>
+    <%= f.label "Colour: "%>
+    <%= alcohols_fields.text_field :colour  %><br>
+    <br>
+    <%= f.label "Content: "%>
+    <%= alcohols_fields.number_field :alcohol_content  %><br>
+    <%end %>
+<br>
+
+
+<h3> Which User are you? </h3>
 
   <%= f.collection_select :user_name, User.all, :name, :name,  include_blank: true %>
 

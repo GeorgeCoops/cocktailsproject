@@ -18,8 +18,9 @@ class CocktailsController < ApplicationController
         # if @cocktail.valid? 
 
         @cocktail.save 
-      
+      byebug
         redirect_to @cocktail
+        
         # end 
         
         # render :new 
@@ -28,7 +29,7 @@ class CocktailsController < ApplicationController
     private
 
     def cocktail_params
-        params.require(:cocktail).permit(:name, :calories, :instructions, :description, :difficulty, :user_name, garnish_ids: [], garnishes_attributes: [:name, :edible])
+        params.require(:cocktail).permit(:name, :calories, :instructions, :description, :difficulty, :user_name, garnish_ids: [], garnishes_attributes: [:name, :edible], mixer_ids: [], mixers_attributes: [:name, :sweet_sour], alcohol_ids: [], alcohols_attributes: [:name, :colour, :alcohol_content])
     end
         
 end

@@ -6,8 +6,7 @@ class Alcohol < ApplicationRecord
     validates :name, presence: true 
     validates :name, length: { maximum: 20 }
     validates :alcohol_content, inclusion: { in: (0..100) }
-    validates :colour, format: { with: /\A[a-zA-Z]+\z/,
-    message: "only allows letters" }
+    validates :colour, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
     validates :name, uniqueness: true
 end
 

@@ -21,6 +21,21 @@ class Cocktail < ApplicationRecord
     end
   end
 
+
+  def mixers_attributes=(mixer_attributes)
+    mixer_attributes.values.each do |mixer_attribute|
+      mixer = Mixer.find_or_create_by(mixer_attribute)
+      self.mixers << mixer
+    end
+  end
+
+  def alcohols_attributes=(alcohol_attributes)
+    alcohol_attributes.values.each do |alcohol_attribute|
+      alcohol = Alcohol.find_or_create_by(alcohol_attribute)
+      self.alcohols << alcohols
+    end
+  end
+
   def user_name=(name)
     self.user = User.find_or_create_by(name: name)
   end
