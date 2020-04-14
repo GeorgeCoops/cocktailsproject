@@ -31,11 +31,13 @@ Alcohol/s this cocktail contains:
 </ul>    
 
 
+Description: <%= @cocktail.description %> 
+</br> 
+</br> 
+Instructions: <%= @cocktail.instructions %> 
 
 
-
-
-<h4>Click here for a random cocktail cocktail!<%= button_to "Show me the cocktail", @cocktail, :method => :get %><br>
+<h4>Click here for a random cocktail!<%= button_to "Show me the cocktail", @cocktail, :method => :get %><br>
 </h4>
 
 

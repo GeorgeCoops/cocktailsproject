@@ -1,0 +1,37 @@
+<h1> New Cocktail Form: </h1> 
+
+<%= form_for @cocktail do |f|%>
+<%=f.label "Name: "%>
+<%= f.text_field :name%><br>
+<br>
+<%= f.label "Calories: " %> 
+<%= f.number_field :calories %> <br>
+<br>
+<%=f.label "Instructions: "%>
+<%= f.text_area :instructions%><br>
+<br>
+<%=f.label "Description: "%>
+<%= f.text_area :description%><br>
+<br>
+<%=f.label "Difficulty: "%>
+<%= f.text_field :difficulty%><br>
+<br>
+<%=f.label "Select your Garnishes: "%>
+<%= f.collection_check_boxes :garnish_ids, Garnish.all, :id, :name %><br>
+<br>
+<%=f.label "Select your Garnishes: "%>
+  <%= f.fields_for :garnishes, @cocktail.garnishes.build do |garnishes_fields| %>
+    <%= f.label "Create a new garnish: "%>
+    <%= garnishes_fields.text_field :name %><br>
+    <%= f.label "Is it edible?"%>
+  <%= garnishes_fields.check_box :edible %>
+    <%end %>
+<br>
+
+  <%= f.collection_select :user_name, User.all, :name, :name,  include_blank: true %>
+
+<%= f.submit %> 
+<% end %> 
+
+
+

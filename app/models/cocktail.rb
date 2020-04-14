@@ -11,9 +11,23 @@ class Cocktail < ApplicationRecord
   validates :name, presence: true
   validates_uniqueness_of :name, scope: :user_id 
   validates :name, length: { maximum: 20 }
-  validates :difficulty, inclusion: { in: %w(easy medium hard), 
-  message: "%{value} is not a valid choice."}
+  validates :difficulty, inclusion: { in: %w(easy medium hard Easy Medium Hard), message: "%{value} is not a valid size" }
   validates :calories, inclusion: { in: (0..1000)}
+
+  def garnishes_attributes=(garnish_attributes)
+    garnish_attributes.values.each do |garnish_attribute|
+      garnish = Garnish.find_or_create_by(garnish_attribute)
+      self.garnishes << garnish
+    end
+  end
+
+  def user_name=(name)
+    self.user = User.find_or_create_by(name: name)
+  end
+
+  def user_name
+     self.user ? self.user.name : nil
+  end
 
   def similar_cocktails
     Cocktail.all.map do |cock|
