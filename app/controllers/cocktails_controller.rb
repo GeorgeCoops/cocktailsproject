@@ -15,15 +15,22 @@ class CocktailsController < ApplicationController
     def create 
 
         @cocktail = Cocktail.new(cocktail_params)
-        # if @cocktail.valid? 
+        if @cocktail.valid?
 
-        @cocktail.save 
-      byebug
+        @cocktail.save
         redirect_to @cocktail
-        
-        # end 
-        
-        # render :new 
+        else 
+          
+            flash[:errors] << @cocktail.errors.full_messages
+
+            flash[:errors] << @cocktail.mixers.map{ |mixer| mixer.errors ? mixer.errors.full_messages : nil}
+            flash[:errors] << @cocktail.alcohols.map{ |alcohol| alcohol.errors ? alcohol.errors.full_messages : nil}
+            flash[:errors] << @cocktail.garnishes.map{ |garnish| garnish.errors ? garnish.errors.full_messages : nil}
+            flash[:errors] = flash[:errors].flatten
+          
+            render :_form
+        end 
+        byebug
     end
 
     private

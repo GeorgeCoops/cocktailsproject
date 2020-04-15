@@ -11,7 +11,8 @@ class Cocktail < ApplicationRecord
   validates :name, presence: true
   validates_uniqueness_of :name, scope: :user_id 
   validates :name, length: { maximum: 20 }
-  validates :difficulty, inclusion: { in: %w(easy medium hard Easy Medium Hard), message: "%{value} is not a valid size" }
+  validates :difficulty, inclusion: { in: %w(easy medium hard Easy Medium Hard), 
+  message: ": For difficulty, easy medium or hard must be selected." }
   validates :calories, inclusion: { in: (0..1000)}
 
   def garnishes_attributes=(garnish_attributes)
@@ -32,7 +33,7 @@ class Cocktail < ApplicationRecord
   def alcohols_attributes=(alcohol_attributes)
     alcohol_attributes.values.each do |alcohol_attribute|
       alcohol = Alcohol.find_or_create_by(alcohol_attribute)
-      self.alcohols << alcohols
+      self.alcohols << alcohol
     end
   end
 
