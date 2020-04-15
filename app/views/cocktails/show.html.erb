@@ -1,6 +1,7 @@
 <h1> <%= @cocktail.name %> </h1>
 
 <p> Calories: <%= @cocktail.calories %> </p>
+<p> Difficulty: <%= @cocktail.difficulty %> </p>
 
 Mixer/s this cocktail contains: 
 <ul>
@@ -8,6 +9,8 @@ Mixer/s this cocktail contains:
     <li> 
     <%= link_to mixer.name, mixer_path(mixer) %>
     </li> 
+
+
 <% end %> 
 </ul>    
 
@@ -32,16 +35,22 @@ Alcohol/s this cocktail contains:
 
 
 Description: <%= @cocktail.description %> 
-</br> 
-</br> 
+<br> 
+<br> 
 Instructions: <%= @cocktail.instructions %> 
 
+<%= button_to "Edit", edit_cocktail_path, method: :get %> 
+<br>
 
-<h4>Click here for a random cocktail!<%= button_to "Show me the cocktail", @cocktail, :method => :get %><br>
+<%= button_to "delete", @cocktail, method: :delete %>
+<br>
+
+
+<h4>Click here for a random cocktail!<%= button_to "Show me the cocktail", @cocktail, :method => :get %>
 </h4>
-
-
 <li>
 <% cocktail = Cocktail.all.sample %> 
 <%=link_to cocktail.name, cocktail_path(cocktail)%>
 </li>
+<br>
+

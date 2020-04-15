@@ -34,14 +34,15 @@ user_locations = ["Berlin", "Manchester", "Kettering", "Bolton", "Clapham", "Inv
 
 puts "Starting Seeding.....Start time: #{Time.now}"
 
-Alcohol.destroy_all
-Garnish.destroy_all
-User.destroy_all
-Mixer.destroy_all
-Cocktail.destroy_all
 CocktailMixer.destroy_all
 CocktailGarnish.destroy_all
 CocktailAlcohol.destroy_all
+Alcohol.destroy_all
+Garnish.destroy_all
+Cocktail.destroy_all
+User.destroy_all
+Mixer.destroy_all
+
 
 
 #Alcohol
@@ -166,13 +167,3 @@ end
 end
 
 
-
-# User.all.map do |user| 
-#     new_array = []
-#     one = user.cocktails.map do |cocktail|
-#         if !new_array.include?(cocktail)
-#             new_array << cocktail
-#         end
-#     end
-    
-# end

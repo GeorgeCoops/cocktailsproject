@@ -1,15 +1,15 @@
 class Cocktail < ApplicationRecord
   belongs_to :user 
-  has_many :cocktail_alcohols
-  has_many :cocktail_garnishes
-  has_many :cocktail_mixers
+  has_many :cocktail_alcohols, dependent: :destroy
+  has_many :cocktail_garnishes, dependent: :destroy
+  has_many :cocktail_mixers, dependent: :destroy
 
   has_many :alcohols, through: :cocktail_alcohols 
   has_many :garnishes, through: :cocktail_garnishes
   has_many :mixers, through: :cocktail_mixers
 
   validates :name, presence: true
-  validates_uniqueness_of :name, scope: :user_id 
+  validates_uniqueness_of :name, scope: :user_id
   validates :name, length: { maximum: 20 }
   validates :difficulty, inclusion: { in: %w(easy medium hard Easy Medium Hard), 
   message: ": For difficulty, easy medium or hard must be selected." }
