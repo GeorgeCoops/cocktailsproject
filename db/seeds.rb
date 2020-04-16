@@ -96,10 +96,11 @@ end
     person = User.new(
     {
         name: user_names.sample,
+        email: "#{person.name.delete(' ').downcase}@gmail.com"
         age: (18..60).to_a.sample,
         favourite_cocktail: "random",
         location: user_locations.sample,
-        active: false 
+
  
     }
     )
@@ -167,3 +168,4 @@ end
 end
 
 
+rails g migration AddPasswordDigestToUsers password_digest:string

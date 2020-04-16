@@ -1,5 +1,8 @@
 <h1> <%= @cocktail.name %> </h1>
 
+<img src=<%= @cocktail.picture %>>
+
+
 <p> Calories: <%= @cocktail.calories %> </p>
 <p> Difficulty: <%= @cocktail.difficulty %> </p>
 
@@ -40,6 +43,7 @@ Description: <%= @cocktail.description %>
 Instructions: <%= @cocktail.instructions %> 
 
 <%= button_to "Edit", edit_cocktail_path, method: :get %> 
+
 <br>
 
 <%= button_to "delete", @cocktail, method: :delete %>

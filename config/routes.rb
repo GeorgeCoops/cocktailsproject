@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   resources :mixers, only: [:index, :show] 
   resources :users
   resources :cocktails, only: [:index, :show, :new, :create, :edit, :update, :destroy] 
+    # login functionality - sessions
+    get "signup", to: "users#new", as: "signup"
+    get "login", to: "sessions#new", as: "login"
+    post "sessions", to: "sessions#create", as: "sessions"
+    delete "sessions", to: "sessions#destroy"
 end

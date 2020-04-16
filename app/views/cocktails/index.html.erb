@@ -4,7 +4,7 @@
 <ul>
 <%@cocktails.all.sort_by(&:name).each do |cocktail|%>
 <li>
-    <%= link_to cocktail.name, cocktail%> created by <%=link_to cocktail.user.name, cocktail.user%>
+    <%= link_to cocktail.name, cocktail%> created by <%=link_to cocktail.user.name, cocktail.user%><img src=<%= cocktail.picture %>>
 </li>
     <%end%>
 </ul>

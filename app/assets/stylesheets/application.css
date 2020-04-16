@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bulma";
+
+ body{ background-color: rgba(180, 171, 171, 0.685);}
+
+
+
+ 

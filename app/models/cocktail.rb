@@ -15,8 +15,6 @@ class Cocktail < ApplicationRecord
   message: ": For difficulty, easy medium or hard must be selected." }
   validates :calories, inclusion: { in: (0..1000)}
 
-
-
   def garnishes_attributes=(garnish_attributes)
     garnish_attributes.values.each do |garnish_attribute|
         if garnish_attribute["name"].present?

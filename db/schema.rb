@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_105508) do
+ActiveRecord::Schema.define(version: 2020_04_16_103459) do
 
   create_table "alcohols", force: :cascade do |t|
     t.string "name"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_105508) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "picture"
     t.index ["user_id"], name: "index_cocktails_on_user_id"
   end
 
@@ -78,9 +79,10 @@ ActiveRecord::Schema.define(version: 2020_04_10_105508) do
     t.integer "age"
     t.string "favourite_cocktail"
     t.string "location"
-    t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
+    t.string "password_digest"
   end
 
   add_foreign_key "cocktail_alcohols", "alcohols"

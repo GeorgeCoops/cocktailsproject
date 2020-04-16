@@ -1,10 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body>
+  
+  <div class="container">
+  <div class="notification">
+
 <% flash[:errors].each do |error| %> 
   <h4 style="color: red;"> 
   <%= error %> 
   </h4> 
 <% end %> 
 
-
+<div class="cocktails">
 <%= form_for @cocktail do |f|%>
 <%=f.label "Name: "%>
 <%= f.text_field :name%><br>
@@ -24,9 +39,14 @@
     <option>Hard</option>
   </select>
 <br>
+<%=f.label "Picture URL: "%>
+<%= f.text_area :picture%><br>
+</div>
 
 <h2> Select your Garnishes: </h2> 
-<%= f.collection_check_boxes :garnish_ids, Garnish.all, :id, :name %><br>
+<%= f.collection_check_boxes( :garnish_ids, Garnish.all, :id, :name) do |b| %>
+  <%= b.label(class:"checkbox") { b.check_box + b.text } %><br>
+<%end%>
 
   <%= f.fields_for :garnishes, @cocktail.garnishes.build do |garnishes_fields| %>
     <h3> Or create a new garnish: </h3>
@@ -40,6 +60,7 @@
 
 
 <h2> Select your Mixers: </h2>
+
 <%= f.collection_check_boxes :mixer_ids, Mixer.all, :id, :name %><br>
 <br>
 
@@ -79,7 +100,11 @@
   <%= f.collection_select :user_name, User.all, :name, :name,  include_blank: true %>
 
 <%= f.submit %> 
+
 <% end %> 
+</div>
+</div>
 
-
+  </body>
+</html>
 

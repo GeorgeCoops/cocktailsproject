@@ -13,7 +13,7 @@ class CocktailsController < ApplicationController
     end
 
     def create 
-byebug
+
         @cocktail = Cocktail.new(cocktail_params)
         if @cocktail.valid?
 
@@ -66,7 +66,7 @@ byebug
     private
 
     def cocktail_params
-        params.require(:cocktail).permit(:name, :calories, :instructions, :description, :difficulty, :user_name, garnish_ids: [], garnishes_attributes: [:name, :edible], mixer_ids: [], mixers_attributes: [:name, :sweet_sour], alcohol_ids: [], alcohols_attributes: [:name, :colour, :alcohol_content])
+        params.require(:cocktail).permit(:name, :picture, :calories, :instructions, :description, :difficulty, :user_name, garnish_ids: [], garnishes_attributes: [:name, :edible], mixer_ids: [], mixers_attributes: [:name, :sweet_sour], alcohol_ids: [], alcohols_attributes: [:name, :colour, :alcohol_content])
     end
         
 end
