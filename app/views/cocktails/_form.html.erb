@@ -9,6 +9,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
   <body>
+
   
   <div class="container">
   <div class="notification">
@@ -71,6 +72,7 @@
     <br>
  
   <select name="cocktail[mixers_attributes][0][sweet_sour]">
+    <option></option>
     <option>Sweet</option>
     <option>Sour</option>
   </select>
@@ -93,11 +95,6 @@
     <%= alcohols_fields.number_field :alcohol_content  %><br>
     <%end %>
 <br>
-
-
-<h3> Which User are you? </h3>
-
-  <%= f.collection_select :user_name, User.all, :name, :name,  include_blank: true %>
 
 <%= f.submit %> 
 

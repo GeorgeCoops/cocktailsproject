@@ -15,6 +15,7 @@ class CocktailsController < ApplicationController
     def create 
 
         @cocktail = Cocktail.new(cocktail_params)
+        @cocktail.user = current_user 
         if @cocktail.valid?
 
         @cocktail.save
@@ -39,6 +40,7 @@ class CocktailsController < ApplicationController
 
     def update 
     @cocktail = Cocktail.find(params[:id])
+
     @cocktail.update(cocktail_params)
         if @cocktail.valid?
 

@@ -16,7 +16,7 @@
     <%= link_to "Logout", sessions_path, method: :delete %>
     <%= link_to "New Cocktail", new_cocktail_path, method: :get%>
     <%= link_to "Cocktail Library", cocktails_path, method: :get%>
-    <%= link_to "My Profile", %>
+    <%= link_to "My Profile", @user, method: :get%>
 
   <% else %>
     <%= link_to "Log In", login_path %>
