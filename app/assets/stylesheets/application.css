@@ -100,3 +100,6 @@ padding: 0.5em;} */
       .topnav-right {
         float: right;
       }
+
+   .column{width: 33%;
+        float: left;}

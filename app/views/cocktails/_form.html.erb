@@ -1,4 +1,18 @@
+<!DOCTYPE html>
 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body>
+
+  
+  <div class="container">
+  <div class="notification">
 
 <% flash[:errors].each do |error| %> 
   <h4 style="color: red;"> 
@@ -20,23 +34,29 @@
 <%=f.label "Description: "%>
 <%= f.text_area :description%><br>
 <br>
+<%= f.label "Difficulty: " %>
   <select name="cocktail[difficulty]">
     <option>Easy</option>
     <option>Medium</option>
     <option>Hard</option>
   </select>
 <br>
+<br>
 <%=f.label "Picture URL: "%>
 <%= f.text_area :picture%><br>
+<br>
 </div>
 
-<h2> Select your Garnishes: </h2> 
+
+<div class="column">
+
+<h2><strong> Select your Garnishes: </strong> </h2> 
 <%= f.collection_check_boxes( :garnish_ids, Garnish.all, :id, :name) do |b| %>
   <%= b.label(class:"checkbox") { b.check_box + b.text } %><br>
 <%end%>
 
-  <%= f.fields_for :garnishes, @cocktail.garnishes.build do |garnishes_fields| %>
-    <h3> Or create a new garnish: </h3>
+  <%= f.fields_for :garnishes, @cocktail.garnishes.build do |garnishes_fields| %><br>
+    <h3><strong> Or create a new garnish: </strong></h3>
     <%= garnishes_fields.text_field :name %>
     <br>
     <br>
@@ -45,18 +65,23 @@
     <%end %>
 <br>
 
+</div>
+<div class="column">
+<h2><strong> Select your Mixers: </strong></h2>
 
-<h2> Select your Mixers: </h2>
-
-<%= f.collection_check_boxes :mixer_ids, Mixer.all, :id, :name %><br>
+<%= f.collection_check_boxes( :mixer_ids, Mixer.all, :id, :name)  do |b| %>
+  <%= b.label(class:"checkbox") { b.check_box + b.text } %><br>
+<%end%>
 <br>
-
+<br>
+<br>
+<br>
   <%= f.fields_for :mixers, @cocktail.mixers.build do |mixers_fields| %>
-    <h3> Or create a new mixer: </h3>
+    <h3><strong> Or create a new mixer: </strong></h3>
     <%= f.label "Name: "%>
     <%= mixers_fields.text_field :name %><br>
     <br>
- 
+ <%= f.label "Sweet or Sour: " %> 
   <select name="cocktail[mixers_attributes][0][sweet_sour]">
     <option></option>
     <option>Sweet</option>
@@ -64,13 +89,20 @@
   </select>
     <%end %>
 <br>
+</div>
 
-<h2> Select your Alcohols: </h2>
-<%= f.collection_check_boxes :alcohol_ids, Alcohol.all, :id, :name %><br>
+<div class="column">
+
+<h2> <strong>Select your Alcohols: </strong></h2>
+<%= f.collection_check_boxes(:alcohol_ids, Alcohol.all, :id, :name)  do |b| %>
+  <%= b.label(class:"checkbox") { b.check_box + b.text } %><br>
+<%end%>
 <br>
-
+<br>
+<br>
+<br>
 <%= f.fields_for :alcohols, @cocktail.alcohols.build do |alcohols_fields| %>
-    <h3> Or create a new Alcohol: </h3>
+    <h3><strong> Or create a new Alcohol: </strong></h3>
     <%= f.label "Name: "%>
     <%= alcohols_fields.text_field :name %><br>
     <br>
@@ -82,8 +114,15 @@
     <%end %>
 <br>
 
+</div>
+
+
 <%= f.submit %> 
 
 <% end %> 
+</div>
+</div>
 
+  </body>
+</html>
 
