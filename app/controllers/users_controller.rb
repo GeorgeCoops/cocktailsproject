@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end 
 
     def show
-
+        @cocktails = @user.cocktails
     end
 
     private 

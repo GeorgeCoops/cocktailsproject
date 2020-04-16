@@ -44,128 +44,163 @@ User.destroy_all
 Mixer.destroy_all
 
 
+Alcohol.create(name: "Vodka", colour: "Light", alcohol_content: 45)
+Alcohol.create(name: "Gin", colour: "Light", alcohol_content: 43)
+Alcohol.create(name: "Rum", colour: "Brown", alcohol_content: 45)
+Alcohol.create(name: "White Rum", colour: "Light", alcohol_content: 42)
+Alcohol.create(name: "Absinthe", colour: "Light", alcohol_content: 75)
+Alcohol.create(name: "Malibu", colour: "Off-light", alcohol_content: 21)
+Alcohol.create(name: "Tequila", colour: "Orange", alcohol_content: 40)
+Alcohol.create(name: "Whiskey", colour: "Brown", alcohol_content: 46)
+Alcohol.create(name: "Kahlua", colour: "Brown", alcohol_content: 22)
+Alcohol.create(name: "Baileys", colour: "Light", alcohol_content: 17)
 
-#Alcohol
-50.times do
-    alc = Alcohol.new(
-    {
-        name: alcohol_name.sample,
-        colour: alcohol_colour.sample,
-        alcohol_content: (30..60).to_a.sample
-    }
-    )
-    if alc.valid? 
-        alc.save
-        puts "Alcohol '#{alc.name}' seeded succesfully."
-    end
-end
+Garnish.create(name: "Lime", edible: true)
+Garnish.create(name: "Lemon", edible: true)
+Garnish.create(name: "Mint", edible: false)
+Garnish.create(name: "Coffee Beans", edible: true)
+Garnish.create(name: "Orange Twist", edible: false)
+Garnish.create(name: "Passionfruit", edible: true)
+Garnish.create(name: "Cocktail Umbrella", edible: false)
+Garnish.create(name: "Straw", edible: false)
+Garnish.create(name: "Watermelon", edible: true)
+Garnish.create(name: "Inedible Flowers", edible: false)
 
-#Garnish
-    50.times do
-        garn = Garnish.new(
-        {
-            name: garnish_name.sample,
-            edible: [true, false].sample
+Mixer.create(name: "Coca-Cola", sweet_sour: "Sweet")
+Mixer.create(name: "Pineapple Juice", sweet_sour: "Sweet")
+Mixer.create(name: "Orange Juice", sweet_sour: "Sweet")
+Mixer.create(name: "Milk", sweet_sour: "Sour")
+Mixer.create(name: "Tonic Water", sweet_sour: "Sweet")
+Mixer.create(name: "Elderflower Cordial", sweet_sour: "Sweet")
+Mixer.create(name: "Lemonade", sweet_sour: "Sweet")
+Mixer.create(name: "Clamato", sweet_sour: "Sour")
+Mixer.create(name: "Sugar Syrup", sweet_sour: "Sweet")
+Mixer.create(name: "Coffee", sweet_sour: "Sour")
+Mixer.create(name: "Apple Juice", sweet_sour: "Sweet")
+
+
+
+# #Alcohol
+# 50.times do
+#     alc = Alcohol.new(
+#     {
+#         name: alcohol_name.sample,
+#         colour: alcohol_colour.sample,
+#         alcohol_content: (30..60).to_a.sample
+#     }
+#     )
+#     if alc.valid? 
+#         alc.save
+#         puts "Alcohol '#{alc.name}' seeded succesfully."
+#     end
+# end
+
+# #Garnish
+#     50.times do
+#         garn = Garnish.new(
+#         {
+#             name: garnish_name.sample,
+#             edible: [true, false].sample
      
-        }
-        )
-        if garn.valid? 
-            garn.save
-            puts "Garnish '#{garn.name}' seeded succesfully."
-        end
-end
+#         }
+#         )
+#         if garn.valid? 
+#             garn.save
+#             puts "Garnish '#{garn.name}' seeded succesfully."
+#         end
+# end
 
 
-#Mixer 
-50.times do
-    mix = Mixer.new(
-    {
-        name: mixer_name.sample,
-        sweet_sour: ["Sweet", "Sour"].sample
+# #Mixer 
+# 50.times do
+#     mix = Mixer.new(
+#     {
+#         name: mixer_name.sample,
+#         sweet_sour: ["Sweet", "Sour"].sample
  
-    }
-    )
-    if mix.valid? 
-        mix.save
-        puts "Mixer '#{mix.name}' seeded succesfully."
-    end
-end
+#     }
+#     )
+#     if mix.valid? 
+#         mix.save
+#         puts "Mixer '#{mix.name}' seeded succesfully."
+#     end
+# end
 
-#users
-50.times do
-    person = User.new(
-    {
-        name: user_names.sample,
-        email: "#{person.name.delete(' ').downcase}@gmail.com"
-        age: (18..60).to_a.sample,
-        favourite_cocktail: "random",
-        location: user_locations.sample,
+# #users
+# 50.times do
+#     person = User.new(
+#     {
+#         name: user_names.sample,
+#         email: "#{person.name.delete(' ').downcase}@gmail.com"
+#         age: (18..60).to_a.sample,
+#         favourite_cocktail: "random",
+#         location: user_locations.sample,
 
  
-    }
-    )
-    if person.valid? 
-        person.save
-        puts "User '#{person.name}' seeded succesfully."
-    end
-end
+#     }
+#     )
+#     if person.valid? 
+#         person.save
+#         puts "User '#{person.name}' seeded succesfully."
+#     end
+# end
 
 
 
-#cocktail
-50.times do
-    cock = Cocktail.new(
-    {
-        name: cocktail_names.sample,
-        calories: (0..500).to_a.sample,
-        instructions: cocktail_instructions.sample,
-        description: cocktail_descriptions.sample,
-        difficulty: cocktail_difficulty.sample,
-        user_id: User.all.sample.id #only seeds a user when the cocktail name is different
+# #cocktail
+# 50.times do
+#     cock = Cocktail.new(
+#     {
+#         name: cocktail_names.sample,
+#         calories: (0..500).to_a.sample,
+#         instructions: cocktail_instructions.sample,
+#         description: cocktail_descriptions.sample,
+#         difficulty: cocktail_difficulty.sample,
+#         user_id: User.all.sample.id #only seeds a user when the cocktail name is different
  
 
-    }
-    )
-    if cock.valid? 
-        cock.save
-        puts "User '#{cock.name}' seeded succesfully."
-    end
-end
+#     }
+#     )
+#     if cock.valid? 
+#         cock.save
+#         puts "User '#{cock.name}' seeded succesfully."
+#     end
+# end
 
 
-#cocktail_garnish
-20.times do
-        CocktailGarnish.create(
-    {
-        cocktail_id: Cocktail.all.sample.id,
-        garnish_id: Garnish.all.sample.id
+# #cocktail_garnish
+# 20.times do
+#         CocktailGarnish.create(
+#     {
+#         cocktail_id: Cocktail.all.sample.id,
+#         garnish_id: Garnish.all.sample.id
  
-    }
-    )
+#     }
+#     )
 
-end
+# end
 
-#cocktail_mixers
-20.times do
-    CocktailMixer.create(
-{
-    cocktail_id: Cocktail.all.sample.id,
-    mixer_id: Mixer.all.sample.id
+# #cocktail_mixers
+# 20.times do
+#     CocktailMixer.create(
+# {
+#     cocktail_id: Cocktail.all.sample.id,
+#     mixer_id: Mixer.all.sample.id
 
-}
-)
-end
+# }
+# )
+# end
 
-#cocktail_alcohol
-20.times do
-    CocktailAlcohol.create(
-{
-    cocktail_id: Cocktail.all.sample.id,
-    alcohol_id: Alcohol.all.sample.id
+# #cocktail_alcohol
+# 20.times do
+#     CocktailAlcohol.create(
+# {
+#     cocktail_id: Cocktail.all.sample.id,
+#     alcohol_id: Alcohol.all.sample.id
 
-}
-)
-end
+# }
+# )
+# end
 
 
-rails g migration AddPasswordDigestToUsers password_digest:string
+# rails g migration AddPasswordDigestToUsers password_digest:string
