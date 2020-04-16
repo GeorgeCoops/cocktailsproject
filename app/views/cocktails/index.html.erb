@@ -1,14 +1,13 @@
-<h1>Cocktail Index Page </h1>
-
-
-<ul>
 <%@cocktails.all.sort_by(&:name).each do |cocktail|%>
-<li>
-    <%= link_to cocktail.name, cocktail%> created by <%=link_to cocktail.user.name, cocktail.user%>
-    <img src=<%= cocktail.picture %>>
-</li>
+
+<div class="card">
+  <img src=<%= cocktail.picture %> alt=<%= cocktail.name %> style="width:100%">
+  <h1><%= cocktail.name %></h1>
+  <p class="title"> <%= cocktail.user.name %> </p>
+  <p><button><%=link_to "View Cocktail", cocktail, :class => "cocktail-button"%></button></p>
+</div>
+
     <%end%>
-</ul>
 
 
 
