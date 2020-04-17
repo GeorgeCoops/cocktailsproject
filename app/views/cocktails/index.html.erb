@@ -3,7 +3,7 @@
 <div class="card">
   <img src=<%= cocktail.picture %> alt=<%= cocktail.name %> style="width:100%">
   <h1><%= cocktail.name %></h1>
-  <p class="title"> <%= cocktail.user.name %> </p>
+  <p class="title"> Made by: <%= link_to cocktail.user.name, cocktail.user %> </p>
   <p><button><%=link_to "View Cocktail", cocktail, :class => "cocktail-button"%></button></p>
 </div>
 

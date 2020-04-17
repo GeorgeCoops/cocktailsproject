@@ -1,10 +1,16 @@
-<%= @user.name %> says Hello!
-
-<ul>
 <%@cocktails.all.sort_by(&:name).each do |cocktail|%>
-<li>
-    <%= link_to cocktail.name, cocktail%> created by <%=link_to cocktail.user.name, cocktail.user%><img src=<%= cocktail.picture %>>
-</li>
-    <%end%>
-</ul>
 
+    <div class="card">
+      <img src=<%= cocktail.picture %> alt=<%= cocktail.name %> style="width:100%">
+      <h1><%= cocktail.name %></h1>
+      <p class="title"> Made by: <%= link_to cocktail.user.name, cocktail.user %> </p>
+      <p><button><%=link_to "View Cocktail", cocktail, :class => "cocktail-button"%></button></p>
+    </div>
+    
+    <%end%>
+
+    <% if @user.cocktails.count == 0 %> 
+    <p> You dont have any cocktails right now, go and create one! </p> 
+    <% end %> 
+    
+    

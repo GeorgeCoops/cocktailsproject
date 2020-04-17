@@ -1,21 +1,29 @@
-<h1> <%= @garnish.name %> </h1>
+<br>
+<br>
 
-<p> Edible: <%= if @garnish.edible; "Yes"; else; "No" end %> </p>
+<div class="card2">
 
-Cocktails that contain this garnish: 
-<ul>
-<% @garnish.cocktails.each do |cock| %> 
-    <li> 
-    <%= link_to "#{cock.name} by #{cock.user.name}", cocktail_path(cock) %>
-    </li> 
+<h1><%= @garnish.name %></h1>
+<p class="title2"> Edible: </p>
+<p class="title"> <%= if @garnish.edible; "Yes"; else; "No" end %> </p>
+<p class="title2">Cocktails that contain this garnish: </p>
+    <% @garnish.cocktails.each do |cock| %> 
+   <p class="title"><%= link_to "#{cock.name} by #{cock.user.name}", cocktail_path(cock) %>
 <% end %> 
-</ul>    
-
-<h4>Click here for a random cocktail containing this garnish!<%= button_to "Show me the cocktail", @garnish, :method => :get %><br>
-</h4>
+  
 
 
-<li>
-<% cocktail = @garnish.cocktails.sample %> 
-<%=link_to cocktail.name, cocktail_path(cocktail)%>
-</li>
+<p><button><%=link_to "All Cocktails", cocktails_path, :class => "cocktail-button"%></button> 
+
+
+<button><%= link_to "Click here for a random cocktail!", all_cocktails.sample , :method => :get %>
+</h4></button> 
+
+<br>
+</p>
+</div>
+
+
+
+
+

@@ -5,6 +5,7 @@ class GarnishesController < ApplicationController
 
     def show
         @garnish = Garnish.find(params[:id])
+       
     end
 
 end

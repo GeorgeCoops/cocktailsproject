@@ -1,62 +1,54 @@
-<h1> <%= @cocktail.name %> </h1>
-<p> Made by: <%= @cocktail.user.name %> 
-
-<img src=<%= @cocktail.picture %>>
-
-
-<p> Calories: <%= @cocktail.calories %> </p>
-<p> Difficulty: <%= @cocktail.difficulty %> </p>
-
-Mixer/s this cocktail contains: 
-<ul>
-<% @cocktail.mixers.each do |mixer| %> 
-    <li> 
-    <%= link_to mixer.name, mixer_path(mixer) %>
-    </li> 
-
-
-<% end %> 
-</ul>    
-
-Garnish/es this cocktail contains: 
-<ul>
-<% @cocktail.garnishes.each do |garnish| %> 
-    <li> 
-    <%= link_to garnish.name, garnish_path(garnish) %>
-    </li> 
-<% end %> 
-</ul>    
-
-
-Alcohol/s this cocktail contains: 
-<ul>
-<% @cocktail.alcohols.each do |alcohol| %> 
-    <li> 
-    <%= link_to alcohol.name, alcohol_path(alcohol) %>
-    </li> 
-<% end %> 
-</ul>    
-
-
-Description: <%= @cocktail.description %> 
-<br> 
-<br> 
-Instructions: <%= @cocktail.instructions %> 
-<% if current_user.id == @cocktail.user.id %>
-<%= button_to "Edit", edit_cocktail_path, method: :get %> 
+    <div class="card2">
+      <img src=<%= @cocktail.picture %> alt=<%= @cocktail.name %> style="width:100%">
+      <h1><%= @cocktail.name %></h1>
+      <p class="title2"> Made by: <p>
+      <p class="title"> <%= link_to @cocktail.user.name, @cocktail.user %> </p>
+      <p class="title2"> Calories: </p>
+      <p class="title"> <%= @cocktail.calories %> </p>
+      <p class="title2"> Difficulty: </p>
+      <p class="title"> <%= @cocktail.difficulty %> </p>
+      <p class="title2">Description: </p>
+      <p class="title"> <%= @cocktail.description %> </p>
+      <p class="title2">Instructions: </p>
+      <p class="title"><%= @cocktail.instructions %> </p>
+      <p class="title2"> Mixer/s this cocktail contains: </p>
+        <p>
+        <% @cocktail.mixers.each do |mixer| %> 
+            <%= link_to mixer.name, mixer_path(mixer) %> <p>
+         <% end %>   
+        <p class="title2"> Garnish/es this cocktail contains: </p>
+         <p>
+         <% @cocktail.garnishes.each do |garnish| %> 
+             <%= link_to garnish.name, garnish_path(garnish) %> <p>
+          <% end %>  
+        <p class="title2"> Alcohol/s this cocktail contains: </p>
+             <p>   
+             
+         <% @cocktail.alcohols.each do |alcohol| %> 
+             <%= link_to alcohol.name, alcohol_path(alcohol) %> <p>
+          <% end %>   
+       
+      <p><button><%=link_to "All Cocktails", cocktails_path, :class => "cocktail-button"%></button> 
+      
+      <% if current_user.id == @cocktail.user.id %>
+      
+     <button> <%= link_to "Edit", edit_cocktail_path, method: :get %> </button> 
 
 <br>
 
-<%= button_to "delete", @cocktail, method: :delete %>
+    <button><%= link_to "Delete", @cocktail, method: :delete %></button> 
 
 <br>
 <%end%> 
 
-<h4>Click here for a random cocktail!<%= button_to "Show me the cocktail", @cocktail, :method => :get %>
-</h4>
-<li>
-<% cocktail = Cocktail.all.sample %> 
-<%=link_to cocktail.name, cocktail_path(cocktail)%>
-</li>
+<button><%= link_to "Click here for a random cocktail!", @cocktails.sample , :method => :get %>
+</h4></button> 
+
 <br>
+      </p>
+    </div>
+
+
+
+
 

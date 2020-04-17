@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     skip_before_action :authorized, only: [:new, :create]
   
     # helper_method(s) are available in the VIEWS as well
-    helper_method :logged_in?, :current_user
+    helper_method :logged_in?, :current_user, :all_cocktails
   
     def current_user
       if session[:user_id]
@@ -11,7 +11,11 @@ class ApplicationController < ActionController::Base
       else
       end
     end
-  
+    
+    def all_cocktails 
+      @cocktails = Cocktail.all 
+    end
+
     def logged_in?
       !!current_user
     end
